@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV341 Intro PHP - Form Example</title>
+</head>
+
+<body>
+<h1>WDV341 Intro PHP</h1>
+<h2>WDV101 Intro HTML and CSS Chapter 9 - Creating Forms - Code Example</h2>
+<p><strong>Basic Form Handler</strong> - This process will display the 'name = value' pairs for all the elements of a form. This summary will on any number of form elements regardless of their name attribute value. </p>
+<p>Use <strong>basicFormExample.php</strong> in the action attribute of your form. </p>
+<p>Field '<strong>name</strong>' - The value of the name attribute from the HTML form element.</p>
+<p>Field <strong>'value</strong>' - The value entered in the field. This will vary depending upon the HTML form element.</p>
+<form id="form1" name="form1" method="post" action="formHandler.php">
+  <p>First Name:
+    <input type="text" name="firstName" id="firstName" />
+</p>
+  <p>Last Name:
+    <input type="text" name="lastName" id="lastName" />
+  </p>
+  <p>School:
+    <input type="text" name="school" id="school" />
+  </p>
+  <p>Favorite Class:<br>
+    <input type="radio" id="introPHP" name="favoriteClass" value="Intro PHP">
+    <label for="Intro PHP">Intro PHP</label>
+
+    <input type="radio" id="advancedJavascript" name="favoriteClass" value="Advanced Javascript">
+    <label for="Advanced Javascript">Advanced Javascript</label>
+
+    <input type="radio" id="webApplicationsComponents" name="favoriteClass" value="Web Applications Components">
+    <label for="Web Applications Components">Web Applications Components</label>
+  <p>
+    <label for="dreamState">Choose your dream state to live:</label>
+
+    <select name="dreamState" id="dreamState">
+      <option name = "iowa" value="Iowa">Iowa</option>
+      <option name = "california" value="California">California</option>
+      <option name = "florida" value="Florida">Florida</option>
+      <option name = "texas" value="Texas">Texas</option>
+    </select>
+  </p>
+  <p>Pets:<br>
+    <input type="checkbox" id="dog" name="dog" value="Dog">
+    <label for="dog">I have a dog</label><br>
+    <input type="checkbox" id="cat" name="cat" value="Cat">
+    <label for="cat">I have a cat</label><br>
+    <input type="checkbox" id="other" name="other" value="Other">
+    <label for="other">I have a different type of pet</label><br>
+    <input type="checkbox" id="none" name="none" value="None">
+    <label for="none">I do not have a pet</label><br>
+
+  </p>
+  <p>
+    <input type="submit" name="button" id="button" value="Submit" />
+    <input type="reset" name="button2" id="button2" value="Reset" />
+  </p>
+</form>
+
+<p>&nbsp;</p>
+</body>
+
+</html>
