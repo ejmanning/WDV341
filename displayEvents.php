@@ -1,5 +1,9 @@
 <?php
 
+//set up session
+session_start();
+if($_SESSION['validUser'] == "yes") {
+
 	try {
 
 		require "dbConnectHost.php";	//CONNECT to the database
@@ -47,9 +51,7 @@
 	<title>Presenting Information Technology</title>
 
 	<style>
-	 	* {
-			background-color: lightblue;
-		}
+
 		.eventBlock {
 			width: 20%;
 			border: 1px solid black;
@@ -70,17 +72,49 @@
 			background-color: white;
 		}
 
+		body {
+			background-color: #cce0ff;
+		}
+
+		#container {
+			width: 75%;
+			margin: 2% 10%;
+			border: 2px solid black;
+			text-align: center;
+			background-color: #828aff;
+
+		}
+
+		textarea {
+
+		}
+
+
+		.projectTitle {
+			text-decoration: underline;
+		}
+
+		header {
+			background-color: #828aff;
+			border: 2px solid white;
+		}
+
 
 	</style>
 </head>
 
 <body>
-
+<header>
+	<center>
+    	<h2>Administrator Options</h2>
+		<p><a href="eventsForm.php"><button>Add New Event</button></a></p>
+		<p><a href="displayEvents.php"><button>See Events</button></a></p>
+		<p><a href="logout.php"><button>Logout</button></a></p>
+	</center>
+</header>
 <div id="container">
+<center>
 
-	<header>
-    	<h1>Presenting Information Technology</h1>
-    </header>
 
 
 
@@ -94,10 +128,10 @@
 
 				<div class="eventBlock">
 					<div class="row">
-						<span class="eventID"><?php echo $row['event_id'] ?></span>
+						<span class="eventID"><strong><?php echo $row['event_id']; ?></strong></span>
 					</div>
 					<div class="row">
-						<span class="eventTitle"><?php echo $row['event_name']; ?></span>
+						<span class="eventTitle"><strong><?php echo $row['event_name']; ?></strong></span>
 					</div>
 
 					<div class="row">
@@ -117,21 +151,29 @@
                         	<span class="eventTime">Time: <?php echo $row['event_time']  ?></span>
                         </div>
 					</div>
+					<div class="row">
+              <?php $event_id=$row['event_id'];	//put event_id into a variable for further processing  ?>
+              <a href='updateEvent.php?id=<?php echo $event_id; ?>'><button>Update</button></a>
+              <a href='deleteEvent.php?id=<?php echo $event_id; ?>'><input type="button" value="Delete"></a>
+          </div>
+
 
 
 				</div><!-- Close Event Block -->
 				<br>
+
         <?php
 			}
 		?>
 
-
+	</center>
 	</main>
 
 	<footer>
     	<p>Copyright &copy; <script> var d = new Date(); document.write (d.getFullYear());</script> All Rights Reserved</p>
 
 	</footer>
+	</div>
 
 
 
@@ -139,3 +181,9 @@
 </div>
 </body>
 </html>
+<?php
+}
+else {
+	header('location: login.php');
+}
+?>
