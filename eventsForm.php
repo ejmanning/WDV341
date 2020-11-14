@@ -1,4 +1,8 @@
 <?php
+//set up session
+session_start();
+if($_SESSION['validUser'] == "yes") {
+
 $nameErrMsg = "";
 $descriptionErrMsg = "";
 $presenterErrMsg = "";
@@ -28,7 +32,18 @@ $inTime = "";
 
 */
 
-function validateName()
+
+
+if(isset($_POST["submitForm"]))
+{
+	//The form has been submitted and needs to be processed
+  	$inName = $_POST['eventName'];
+	$inDescription= $_POST['eventDescription'];
+	$inPresenter = $_POST['eventPresenter'];
+	$inDate = $_POST['eventDate'];
+  	$inTime = $_POST['eventTime'];
+
+  function validateName()
 {
 	global $inName, $validForm, $nameErrMsg;		//Use the GLOBAL Version of these variables instead of making them local
 	$nameErrMsg = "";								//Clear the error message.
@@ -38,17 +53,6 @@ function validateName()
 		$nameErrMsg = "Name is required";	//Error message for this validation
 	}
 }
-
-
-
-if(isset($_POST["submitForm"]))
-{
-	//The form has been submitted and needs to be processed
-  $inName = $_POST['eventName'];
-	$inDescription= $_POST['eventDescription'];
-	$inPresenter = $_POST['eventPresenter'];
-	$inDate = $_POST['eventDate'];
-  $inTime = $_POST['eventTime'];
 
 
 	function validateDescription()
@@ -108,11 +112,6 @@ if(isset($_POST["submitForm"]))
 		if($validForm)
 		{
 			$message = "You have submitted the form. Preparing to put into database.";
-			echo "<center><p>Event Name: $inName</p>";
-			echo "<p>Event Description: $inDescription</p>";
-			echo "<p>Event Presenter: $inPresenter</p>";
-			echo "<p>Event Date: $inDate</p>";
-			echo "<p>Event Time: $inTime</p></center>";
 
 			try {
 
@@ -184,7 +183,7 @@ if(isset($_POST["submitForm"]))
 
     form {
       border: 2px solid black;
-      background-color: lightblue;
+      background-color: #828aff;
       text-align: center;
       width: 70%;
       margin-left: 15%;
@@ -205,29 +204,46 @@ if(isset($_POST["submitForm"]))
       text-align: center;
     }
 
+    body {
+		background-color: #cce0ff;
+	}
+
+	header {
+		background-color: #828aff;
+		border: 2px solid white;
+	}
+
     </style>
   </head>
   <body>
+  <header>
+  	<center>
+  	<h2>Administrator Options</h2>
+	<p><a href="eventsForm.php"><button>Add New Event</button></a></p>
+	<p><a href="displayEvents.php"><button>See Events</button></a></p>
+	<p><a href="logout.php"><button>Logout</button></a></p>
+	</center>
+</header>
     <h3><?php echo $message; ?></h3>
     <form method="post" action="" name = "eventsForm" id="eventsForm">
       <h1>Add an Event</h1>
       <label for="eventName">Event Name:</label>
-      <td class="error"><?php echo "$nameErrMsg"; //place error message on form  ?></td><br>
+      <td class="error"><?php echo "$nameErrMsg"; ?></td><br>
       <input type = "text" id="eventName" name="eventName"></input>
 
 
       <label for="eventDescription">Event Description:</label>
-      <td class="error"><?php echo "$descriptionErrMsg"; //place error message on form  ?></td><br>
+      <td class="error"><?php echo "$descriptionErrMsg"; ?></td><br>
       <textarea id ="eventDescription" name="eventDescription" cols="30" rows="10"></textarea>
 
 
       <label for="eventPresenter">Event Presenter:</label>
-      <td class="error"><?php echo "$presenterErrMsg"; //place error message on form  ?></td><br>
+      <td class="error"><?php echo "$presenterErrMsg";  ?></td><br>
       <input type = "text" id="eventPresenter" name="eventPresenter"></input>
 
 
       <label for="eventDate">Event Date:</label>
-      <td class="error"><?php echo "$dateErrMsg"; //place error message on form  ?></td><br>
+      <td class="error"><?php echo "$dateErrMsg";  ?></td><br>
       <input type = "date" id="eventDate" name="eventDate"></input>
 
 
@@ -243,3 +259,9 @@ if(isset($_POST["submitForm"]))
 
   </body>
 </html>
+<?php
+}
+else {
+	header('location: login.php');
+}
+?>
