@@ -1,0 +1,258 @@
+
+@font-face {
+font-family: 'alpha_echoregular';
+src: url('../fonts/alpha_echo-webfont.eot');
+src: url('../fonts/alpha_echo-webfont.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/alpha_echo-webfont.woff2') format('woff2'),
+     url('../fonts/alpha_echo-webfont.woff') format('woff'),
+     url('../fonts/alpha_echo-webfont.ttf') format('truetype'),
+     url('../fonts/alpha_echo-webfont.svg#alpha_echoregular') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: 'comic_zine_otregular';
+src: url('../fonts/comic_zine_ot-webfont.eot');
+src: url('../fonts/comic_zine_ot-webfont.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/comic_zine_ot-webfont.woff2') format('woff2'),
+     url('../fonts/comic_zine_ot-webfont.woff') format('woff'),
+     url('../fonts/comic_zine_ot-webfont.ttf') format('truetype'),
+     url('../fonts/comic_zine_ot-webfont.svg#comic_zine_otregular') format('svg');
+font-weight: normal;
+font-style: normal;
+
+}
+
+  body {
+    background-image: linear-gradient(90deg, red 50%, white 50%, #fff);
+    background-size: 50px 50px;
+  }
+
+  header {
+    background-color: red;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 150%;
+    text-align: center;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    border: 2px solid maroon;
+    font-family: 'alpha_echoregular';
+    font-size: 110%;
+  }
+
+  header h1 {
+    font-size: 300%;
+  }
+
+  header img {
+    width: 3%;
+    vertical-align: middle;
+  }
+
+  .msg {
+    background-color: black;
+    color: white;
+    text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+    border-bottom: 5px solid red;
+    line-height: 50px;
+    font-size: 250%;
+  }
+
+  .navbar {
+    padding-left: 0%;
+    padding-right: 30%;
+  }
+
+  .nav-item {
+    margin-left: 2%;
+    width: 320px;
+
+  }
+
+  .navbar-toggler {
+    margin-left: 3%;
+  }
+
+  nav a:hover {
+    background-color: maroon;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid black;
+    color: white;
+  }
+
+  form {
+    background-image: url(../images/popcorn.jpg);
+    background-size: 400px;
+    background-color: #ffffa1;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 2%;
+    width: 38%;
+    border-radius: 50px;
+    border: thick solid black;
+    color: white;
+    font-size: 120%;
+  }
+
+  form h1 {
+    font-family: 'comic_zine_otregular';
+    font-size: 350%;
+    text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+  }
+
+  .message {
+    text-align: center;
+    background-color: white;
+  }
+
+  .fill {
+    background-color: #303030;
+    margin-bottom: 4%;
+    width: 100%;
+    padding: 1%;
+  }
+
+  .rate {
+    background-color: #303030;
+    margin-bottom: 4%;
+    width: 100%;
+    padding: 1%;
+  }
+
+    .movieRating {
+      margin-left: 30%;
+      float: left;
+    }
+
+  /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+  .movieRating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+  }
+
+  .movieRating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+  }
+
+  .movieRating:not(:checked) > label:before {
+    content: '★ ';
+  }
+
+  .movieRating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+  }
+
+  .movieRating:not(:checked) > label:hover,
+  .movieRating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+  }
+
+  .movieRating > input:checked + label:hover,
+  .movieRating > input:checked + label:hover ~ label,
+  .movieRating > input:checked ~ label:hover,
+  .movieRating > input:checked ~ label:hover ~ label,
+  .movieRating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+  }
+
+  .movieRating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+  }
+
+  @media only screen and (max-width: 1400px) {
+    .nav-item {
+      margin-left: 1%;
+      width: 250px;
+    }
+
+  }
+
+  @media only screen and (max-width: 1180px) {
+    .nav-item {
+      margin-left: 1%;
+      width: 200px;
+    }
+    textarea {
+      width: 80%;
+    }
+
+    .movieRating {
+      margin-left: 20%;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    form {
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+    }
+
+    .movieRating {
+      margin-left: 37%;
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    .nav-item {
+      margin-left: 1%;
+      width: 170px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .navbar-nav {
+      margin-left: 50%;
+    }
+
+    .movieRating {
+      margin-left: 35%;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .navbar-nav {
+      margin-left: 30%;
+    }
+
+    header img {
+      width: 7%;
+      vertical-align: middle;
+    }
+
+    .movieRating {
+      margin-left: 27%;
+    }
+
+    form h1.fill {
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      width: 95%;
+    }
+
+  }
+
+  @media only screen and (max-width: 415px) {
+    .movieRating {
+      margin-left: 20%;
+    }
+  }
